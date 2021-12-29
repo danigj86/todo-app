@@ -84,6 +84,7 @@ export const TodoApp = () => {
             <div className="row">
 
                 <div className="glassmorphism col-md-7 ">
+                    
                     <TodoList todos={todos}
                       marcar={marcar}
                       borrar={borrar}
