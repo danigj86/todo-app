@@ -22,7 +22,6 @@ export const TodoList = ({ todos, marcar, borrar }) => {
                         :
                         <div className='list-group-item'>
                             <p>No hay tareas por hacer. Puedes añadir varias.</p>
-                            <img src="https://img.icons8.com/color/48/000000/happy--v1.png"/>
                         </div>
 
 
