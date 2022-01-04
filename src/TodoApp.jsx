@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { AddTodo } from './components/AddTodo'
 import { TodoList } from './components/TodoList'
 import { todoReducer } from './components/todoReducer'
@@ -13,19 +13,20 @@ const init = () => {
 
 export const TodoApp = () => {
 
+
+    const [todos, dispatch] = useReducer(todoReducer, [], init);
+    
+
     const [formState, cambiaInput, reset] = useForm({
         description: ''
     })
-
-    const [todos, dispatch] = useReducer(todoReducer, [], init);
-
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos])
 
 
-
+//añade nueva tarea del formulario
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -40,7 +41,7 @@ export const TodoApp = () => {
             payload: newTodo
         }
 
-        if (formState.description == '') {
+        if (formState.description === '') {
             alert('No dejes un campo vacío');
             return false
         }
@@ -49,7 +50,7 @@ export const TodoApp = () => {
         reset();
 
     }
-
+//marca una tarea
     const marcar = (id) =>{
 
         const action = {
@@ -59,7 +60,7 @@ export const TodoApp = () => {
 
         dispatch(action);
     }
-
+//borra tarea
     const borrar = (id) =>{
 
         const action = {
